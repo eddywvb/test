@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ID Lookup</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input { padding: 6px; }
+    button { padding: 6px 12px; }
+    #result { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>Find Full Name by ID (contoh ada 1,2,3,4,5 sahaja)</h2>
+
+  <input type="number" id="idInput" placeholder="Enter ID" />
+  <button onclick="lookup()">Search</button>
+
+  <div id="result"></div>
+
+  <!-- Load data FIRST -->
+  <script src="people.js"></script>
+
+  <!-- App logic -->
+  <script>
+    function lookup() {
+      const id = Number(document.getElementById("idInput").value);
+      const result = document.getElementById("result");
+
+      if (Number.isNaN(id)) {
+        result.textContent = "Please enter a valid number";
+        return;
+      }
+
+      result.textContent = PEOPLE[id] || "ID not found";
+    }
+  </script>
+
+</body>
+</html>
