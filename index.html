@@ -207,11 +207,11 @@
 
       const found = PEOPLE[id];
       if (found) {
-        result.textContent = found;
+        result.textContent = `ID = ${id}, Name = ${found}`;
         result.style.background = "#f0fff4";
         result.style.color = "#28a745";
       } else {
-        result.textContent = "ID not found";
+        result.textContent = `ID = ${id} not found`;
         result.style.background = "#fff5f5";
         result.style.color = "#dc3545";
       }
@@ -224,6 +224,14 @@
     document.addEventListener('DOMContentLoaded', function() {
       const input = document.getElementById("idInput");
       input.focus();
+      
+      // Also add event listener to the button for accessibility
+      document.getElementById("idInput").addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          lookup();
+        }
+      });
     });
   </script>
 
